@@ -121,8 +121,8 @@ def listado_atenciones(request):
     context={"atenciones": atenciones}
     return render(request, 'listado_atenciones.html', context)
 
-def listado_atenciones_usuario(request):
-    atenciones = Atencion.objects.all().order_by('nombreMecanico')
+def listado_atenciones_usuario2(request):
+    atenciones = Atencion.objects.all().order_by('-nombreMecanico')
 
     context = {
         'atenciones': atenciones
@@ -130,8 +130,8 @@ def listado_atenciones_usuario(request):
 
     return render(request, 'listado_atenciones_usuario.html', context)
 
-def listado_atenciones_usuario2(request):
-    atenciones = Atencion.objects.all().order_by('categoria')
+def listado_atenciones_usuario(request):
+    atenciones = Atencion.objects.all().order_by('-categoria')
 
     context = {
         'atenciones': atenciones
