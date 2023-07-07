@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Enlazando el CSS de Bootstrap -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/css.css' %}">
+
+  </head>
+  <body class="bow">
+     <div class="cajaTexto">
+      <h2><header>Estado de atenciones</header></h2>
+     </div>
+     <style>
+      @media (max-width: 767px) {
+        .lario3 {
+          font-size: 9px;
+        }
+      }
+      </style>
+    <div >
+      {% if mensaje %}
+        {{mensaje}}
+      {% endif %}
+    </div>
+     <div class="lario3">
+      
+      <table class="table table-bordered table-striped" id="tabla1" style="background-color: white; color: #1b539c;">
+        {% if formres%}
+          <th>Contexto de negocio</th>
+          <th>Estado de la atencion</th>
+          <th>Tipo de la atencion</th>
+          <th>Dias habiles de oprecion (aprox.)</th>
+          <th>Justificacion</th>
+          {% for x in formres%}
+            <tr>
+              <td>{{ x.trabajos}}</td>
+              <td>{{ x.estado}}</td>
+              <td>
+                {% if x.tipoAtencion == "marc" %}
+                Marca
+              {% elif x.tipoAtencion == "mec" %}
+                Mecánico
+              {% elif x.tipoAtencion == "mod" %}
+                Modelo
+              {% else %}
+                {{ x.tipoAtencion }}
+              {% endif %}
+              </td>
+              <td>{{ x.diasHabiles}}</td>
+              <td>{{ x.justificacion}}</td>
+
++
+
+            </tr>
+          {% endfor%}
+
+        {% else %}
+        <tr>
+          <td>No existen atenciones</td>
+        </tr>
+        {%endif%}
+      </table>
+
+     </div>
+
+      <div class="buttons">
+        <center><div class="nav-item">
+            <a href="{% url 'cuenta_angel_d_revilla' %}" style="color: white;" type="button" class="login-button btn btn-xs btn-default" title="Log in">
+            <span class="glyphicon glyphicon-log-in"></span> Volver </a></center>
+      </div>
+
+
+    </div>
+
+    
+
+  </body>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+</html>

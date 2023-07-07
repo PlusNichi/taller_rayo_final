@@ -1,0 +1,136 @@
+[
+    {
+        "mecanicos": [
+        {
+            "id": 1,
+            "nombre": "Angel Revilla",
+            "Tipo_Mantencion": "Mantencion de vehiculos",
+            "atenciones": [
+            {
+                "id": 1,
+                "detalle": "Cambio de pintura Kia Morning",
+                "estado_atencion": "Aceptada",
+                "tipo_opcion": "Marca",
+                "dias_resolucion": 2,
+                "justificacion": "N/A",
+                "ingreso": true
+
+            },
+            {
+                "id": 2,
+                "detalle": "Solicitud para cambiar carroceria a un vehiculo 4x4",
+                "estado_atencion": "Rechazada",
+                "tipo_opcion": "Mecanico",
+                "dias_resolucion":  7,
+                "justificacion": "No se muestra imagen del vehiculo",
+                "ingreso": false
+            },
+            {
+                "id": 3,
+                "detalle": "Cliente quiere comprar nuevo modelo de auto",
+                "estado_atencion": "Aceptada",
+                "tipo_opcion": "Modelo",
+                "dias_resolucion": 8,
+                "justificacion":"N/A",
+                "ingreso": true
+            },
+            {
+                "id": 4,
+                "detalle": "Nueva pintura a Chevrolet Camaro",
+                "estado_atencion": "Rechazada",
+                "tipo_opcion": "Modelo",
+                "dias_resolucion": 7,
+                "justificacion":"No se especifica el color al que se desea cambiar",
+                "ingreso": false
+            }
+            ]
+        },
+        {
+            "id": 2,
+            "nombre": "Javier Gonzales",
+            "Tipo_Mantencion": "Mantencion herramientas",
+            "atenciones": [
+            {
+                "id": 5,
+                "detalle": "Cambio de aceite a Ford mustang",
+                "estado_atencion": "Aceptada",
+                "tipo_opcion": "Marca",
+                "dias_resolucion": 2,
+                "justificacion":"N/A",
+                "ingreso": true
+            },
+            {
+                "id": 6,
+                "detalle": "Solicitud para arreglar vehiculo",
+                "estado_atencion": "Aceptada",
+                "tipo_opcion": "Mecanico",
+                "dias_resolucion": 7,
+                "justificacion":"N/A",
+                "ingreso": true
+            },
+            {
+                "id": 7,
+                "detalle": "Proyecto para aprobar venta de autos de marca china",
+                "estado atencion": "Rechazada",
+                "tipo_opcion": "Marca",
+                "dias_resolucion": 14,
+                "justificacion":"No es periodo de ingreso de nuevas marcas",
+                "ingreso": false
+            },
+            {
+                "id": 8,
+                "detalle": "Reposicion de ventana izquierda delantera a Toyota Yaris",
+                "estado_atencion": "Aceptada",
+                "tipo_opcion": "Modelo",
+                "dias_resolucion": 5,
+                "justificacion":"N/A",
+                "ingreso": true
+            }
+            ]
+        },
+        {
+            "id": 3,
+            "nombre": "Gonzalo Penaloza",
+            "Tipo_Mantencion": "Mantencion frenos",
+            "atenciones": [
+            {
+                "id": 9,
+                "detalle": "Remodelacion vehiculo 4x4",
+                "estado_atencion": "Rechazada",
+                "tipo_opcion": "Modelo",
+                "dias_resolucion": 5,
+                "justificacion":"El taller no hace remodelaciones de vehiculos",
+                "ingreso": false
+            },
+            {
+                "id": 10,
+                "detalle": "Solicitud para cambio de neumatico derecho trasero a Hyundai Accent",
+                "estado_atencion": "Aceptada",
+                "tipo_opcion": "Mecanico",
+                "dias_resolucion": 5,
+                "justificacion":"N/A",
+                "ingreso": true
+            },
+            {
+                "id": 11,
+                "detalle": "Cliente solicita cambio de aceite a su vehiculo",
+                "estado_atencion": "Rechazada",
+                "tipo_opcion": "Modelo",
+                "dias_resolucion": 4,
+                "justificacion":"Demasiadas faltas de ortografia en a solicitud",
+                "ingreso": false
+            },
+            {
+                "id": 12,
+                "detalle": "Nueva pintura a Dodge Charger",
+                "estado_atencion": "Aceptada",
+                "tipo_opcion": "Modelo",
+                "dias_resolucion": 7,
+                "justificacion":"El taller no hace remodelaciones de vehiculos",
+                "ingreso": true
+            }
+            ]
+        }
+        ]
+    }
+]

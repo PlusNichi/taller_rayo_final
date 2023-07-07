@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/css.css' %}">
+
+  </head>
+  <body class="bow">
+     <div class="cajaTexto">
+      <h2><header>Listado de atenciones</header></h2>
+     </div>
+     <style>
+      @media (max-width: 767px) {
+        .lario3 {
+          font-size: 9px;
+        }
+      }
+      </style>
+    <div >
+      {% if mensaje %}
+        {{mensaje}}
+      {% endif %}
+    </div>
+     <div class="lario3">
+        
+        <input type="text" id="busquedaInput" placeholder="Buscar...">
+      
+      <table class="table table-bordered table-striped" id="tabla1" style="background-color: white; color: #1b539c;">
+        {% if atenciones%}
+          <th>trabajo</th>
+          <th>diagnostico</th>
+          <th>fecha</th>
+          <th>modeloAuto</th>
+          <th>categoria</th>
+          <th>nombre mecanico</th>
+          <th>costo</th>
+          {% if user.is_authenticated and user.is_superuser %}
+           <th>Modificar</th>
+           <th>Eliminar</th>
+          {% endif %}
+          <th>ver</th>
+          {% for x in atenciones%}
+            {% if x.verify == '1' %}
+            <tr>
+              <td>{{ x.trabajo}}</td>
+              <td>{{ x.diagnostico}}</td>
+              <td>{{ x.fecha}}</td>
+              <td>{{ x.modeloAuto}}</td>
+              <td>{{ x.categoria}}</td>
+              <td>
+                {% if x.nombreMecanico == "Juan" %}
+                  Angel David Revilla
+                {% elif x.nombreMecanico == "María" %}
+                  Javier Gonzales
+                {% elif x.nombreMecanico == "Pedro" %}
+                  Gonzalo Peñaloza
+                {% else %}
+                  {{ x.nombreMecanico }}
+                {% endif %}
+              </td>
+              <td>{{ x.costo}}</td>
+              {% if user.is_authenticated and user.is_superuser %}
+                <td><a class="btn-xs btn-warning" style="padding: 0 !important;" href="{% url 'modificar_atenciones_usuario' pk=x.trabajo %}">Modificar</a></td>
+                <td><a class="btn-xs btn-danger" style="padding: 0 !important;" href="{% url 'eliminar_atenciones_usuario' pk=x.trabajo %}">Eliminar</a></td>
+              {% endif %}
+              <td><a class="btn-xs btn-primary" style="padding: 0 !important;" href="{% url 'detalle_trabajo1_mecanica_makween_23' id=x.trabajo %}">Ver</a></td>
+            </tr>
+            {% endif %}
+          {% endfor%}
+
+        {% else %}
+        <tr>
+          <td>No existen atenciones</td>
+        </tr>
+        {%endif%}
+      </table>
+
+     </div>
+
+      <div class="buttons">
+        <center><div class="nav-item">
+            <a href="{% url 'cuenta_angel_d_revilla' %}" style="color: white;" type="button" class="login-button btn btn-xs btn-default" title="Log in">
+            <span class="glyphicon glyphicon-log-in"></span> Volver </a></center>
+      </div>
+
+
+    </div>
+
+
+    <script>
+        //mi compañero seba suele hacer archivos java para que aqui sean citados, mas personalmente aqui para contextualizar preferi directamente hacer el buscador aqui
+        const input = document.getElementById('busquedaInput');
+        const tabla = document.getElementById('tabla1');
+      
+        function filtrarTabla() {
+          const filtro = input.value.toLowerCase();
+      
+          for (let i = 1; i < tabla.rows.length; i++) {
+            const fila = tabla.rows[i];
+            let encontrado = false;
+      
+            for (let j = 0; j < fila.cells.length; j++) {
+              const celda = fila.cells[j];
+              const valor = celda.innerText.toLowerCase();
+      
+              if (valor.includes(filtro)) {
+                encontrado = true;
+                break;
+              }
+            }
+
+            if (encontrado) {
+              fila.style.display = '';
+            } else {
+              fila.style.display = 'none';
+            }
+          }
+        }
+      
+        input.addEventListener('keydown', function (event) {
+          if (event.key === 'Enter') {
+            event.preventDefault();
+            filtrarTabla();
+          }
+        });
+      
+        input.addEventListener('input', filtrarTabla);
+      </script>
+
+    
+
+  </body>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+</html>

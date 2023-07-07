@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+ <html>
+    <head>
+        <title>Taller Mecanico Rayo Makween</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/css.css' %}">
+    </head>
+     <body>
+      <h1><header>Formulario para agregar Nueva Atencion</header></h1>
+      <div >
+        {% if mensaje %}
+          {{mensaje}}
+        {% endif %}
+      </div>
+      <div class="lario2">
+        <form id="miFormulario" action="ate_aprobada" method="post">
+        {% csrf_token %} 
+        <div>
+            <label for="contexto">Contexto de trabajo:</label>
+            <input type="text" id="contexto" name="contexto" required>
+          </div>
+          
+
+ 
+            <div>
+              <label for="estadoAte">Estado de atencion:</label>
+              <input type="text" id="estadoAte" name="estadoAte" value="Aceptada" readonly>
+            </div>
+
+            <div>
+                <label for="tipo">Tipo de atención:</label>
+                <select id="tipo" name="tipo" required>
+                  <option value="">Seleccione un tipo</option>
+                  <option value="marc">Marca</option>
+                  <option value="mec">Mecánico</option>
+                  <option value="mod">Modelo</option>
+                </select>
+              </div>
+
+            <div>
+              <label for="dias">Dias habiles de operacion:</label>
+              <input type="text"  id="dias" name="dias" required>
+            </div>
+
+            <div>
+                <label for="justificacion">Justificacion:</label>
+                <input type="text"  id="justificacion" name="justificacion" value="N/A" readonly>
+            </div>
+
+            <a href="{% url 'listado_atenciones' %}" type="button" class="login-button btn btn-primary btn-default" title="Volver" style="color:white;">Volver</a>
+                
+          
+            <input class="login-button btn btn-danger btn-default" type="submit" value="Enviar">
+            </div></center>
+          </form>
+
+
+        </div>
+
+
+        <script src="{% static 'js/java.js' %}"></script>
+
+
+
+     </body>
+
+   </html>

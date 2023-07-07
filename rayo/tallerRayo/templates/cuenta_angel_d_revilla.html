@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+ <html>
+    <head>
+        <title>Taller Mecanico Rayo Makween</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  
+  <link rel="stylesheet" href="{% static 'css/css.css' %}">
+     </head>
+    <body>
+        <h1><header>Taller Mecanico Cuchau</header></h1>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+            <ul class="navbar-nav text-center">
+              <li class="nav-item active">
+                <a href="" type="button" class="login-button btn btn-xs btn-default" title="Log in">
+                  <span class="glyphicon glyphicon-log-in"></span> Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a href="" type="button" class="login-button btn btn-xs btn-default" title="Log in">
+                  <span class="glyphicon glyphicon-log-in"></span> Nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a href="" type="button" class="login-button btn btn-xs btn-default" title="Log in">
+                  <span class="glyphicon glyphicon-log-in"></span> Contactanos </a>
+              </li>
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a href="{% url 'listado_atenciones_usuario' %}" type="button" class="login-button btn btn-xs btn-default" title="Log in">
+                  <span class="glyphicon glyphicon-log-in"></span>Atenciones Ingresadas </a>
+              </li>
+
+              {% endif %}
+
+              {% if user.is_authenticated and user.is_superuser or user.last_name == '1' %}
+                <li class="nav-item">
+                  <a href="{% url 'listado_atenciones' %}" type="button" class="login-button btn btn-xs btn-default" title="Log in">
+                    <span class="glyphicon glyphicon-log-in"></span>Atenciones Pendientes </a>
+                </li>
+              {% endif %}
+
+              <li class="nav-item">
+                <a href="{% url 'Estado_antenciones_adr' %}" type="button" class="login-button btn btn-xs btn-default" title="Log in">
+                  <span class="glyphicon glyphicon-log-in"></span> Ver estado de atenciones enviadas </a>
+              </li>
+
+
+  
+              <li class="nav-item">
+                <a href="{%url 'logout' %}" type="button" class="login-button btn btn-xs btn-default" title="Log in">
+                  <span class="glyphicon glyphicon-log-in"></span> Cerrar sesion </a>
+              </li>
+
+              <li class="nav-item">
+              <div class="container-imag" style="font-weight: 600; color: #2787c7;">
+                <a><span class="glyphicon glyphicon-log-in"></span>{{ request.user.first_name }} {{ request.user.last_name }}</a>
+              </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    
+        <div class="row">
+  
+          <div style="background-color: #2787c7 ;" position id="carouselExamplesSlidesOnly" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <center><a href="{% url 'detalle_trabajo_ultima_fecha' %}"><img src="{% static 'img/auto-adr1.jpg' %}" class="d-block img-fluid" alt="..." width="80%"></a></center>
+                </div>
+                <div class="carousel-item">
+                  <center><a href="{% url 'detalle_trabajo_ultima_fecha2' %}"><img src="{% static 'img/kia-adr2.jpg' %}" class="d-block img-fluid" alt="..." width="80%"></a></center>
+                </div>
+                <div class="carousel-item">
+                 <center><a href="{% url 'detalle_trabajo_ultima_fecha3' %}"><img src="{% static 'img/chevrolet-adr3.jpeg' %}" class="d-block img-fluid" alt="..." width="80%"></a></center>
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExamplesSlidesOnly" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon"aria-hidden="true"> </span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExamplesSlidesOnly" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+          </div>
+      </body>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</html>
